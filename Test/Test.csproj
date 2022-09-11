@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\zinoo2\zinoo2.csproj" />
+    <ProjectReference Include="..\zinoo2\zino_v1.csproj" />
   </ItemGroup>
 
 </Project>
