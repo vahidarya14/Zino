@@ -24,9 +24,9 @@
 
 
 
-        public UnitCoefficient MillimeterFactory() => new("میلی متر", "Millimeter", "mm", Dimension.Meter, 0.001M);
-        public UnitCoefficient CentimeterFactory() => new("سانتی متر", "Centimeter", "cm", Dimension.Meter, 0.01M);
-        public UnitCoefficient KilometerFactory() => new("کیلومتر", "Kilometer", "km", Dimension.Meter, 1000M);
+        public static UnitCoefficient Millimeter() => new("میلی متر", "Millimeter", "mm", Dimension.Meter, 0.001M);
+        public static UnitCoefficient Centimeter() => new("سانتی متر", "Centimeter", "cm", Dimension.Meter, 0.01M);
+        public static UnitCoefficient Kilometer() => new("کیلومتر", "Kilometer", "km", Dimension.Meter, 1000M);
     }
 
 
