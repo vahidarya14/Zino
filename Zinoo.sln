@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "zinoo2", "zinoo2\zinoo2.csproj", "{D49CB543-E5C1-4CE7-88D6-C5C0DCF96E65}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "zino_v1", "zinoo2\zino_v1.csproj", "{D49CB543-E5C1-4CE7-88D6-C5C0DCF96E65}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{383A2489-57A4-40A6-9AA4-4B4F81B87E5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Test", "Test\Test.csproj", "{383A2489-57A4-40A6-9AA4-4B4F81B87E5F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zino_v2", "Zino\Zino_v2.csproj", "{2ADB4060-834B-4ACF-8C9C-5532BA71663A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{383A2489-57A4-40A6-9AA4-4B4F81B87E5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{383A2489-57A4-40A6-9AA4-4B4F81B87E5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{383A2489-57A4-40A6-9AA4-4B4F81B87E5F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2ADB4060-834B-4ACF-8C9C-5532BA71663A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2ADB4060-834B-4ACF-8C9C-5532BA71663A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2ADB4060-834B-4ACF-8C9C-5532BA71663A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2ADB4060-834B-4ACF-8C9C-5532BA71663A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
