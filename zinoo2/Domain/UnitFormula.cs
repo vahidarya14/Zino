@@ -67,22 +67,7 @@
                 formula = formula.Replace($"{subStr}", "");
                 formula=formula.Replace("()", subStr2);
             }
-            //formula = formula.Replace("-", "+-");
-            //if(formula.StartsWith("+-"))
-            //    formula=formula.Substring(1);
-            //var opts = GetOperations(formula);
-            //foreach (var op in new[] { '*', '/', '+' })
-            //{
-            //    while (opts.Contains(op))
-            //    {
-            //        var digits = formula.Split(new[] { '*', '/', '+' }, StringSplitOptions.RemoveEmptyEntries).Select(x => decimal.Parse(x)).ToList();
 
-            //        var index = opts.FindIndex(0, x => x == op);
-            //        var resultInPrenteze = DoOperation(digits[index], digits[index + 1], op.ToString());
-            //        opts.Remove(opts[index]);
-            //        formula = formula.Replace($"{digits[index]}{op}{digits[index + 1]}", resultInPrenteze.ToString());
-            //    }
-            //}
             formula = DoTheBlock(formula);
 
 
@@ -144,12 +129,6 @@
                     var item = formula[i];
                     if (new[] { '*', '/', '+' }.Contains(item))
                     {
-                        //if (item == '-')
-                        //{
-                        //    if (i>0 && formula[i - 1] != '[')
-                        //        opts.Add(item);
-                        //}
-                        //else
                             opts.Add(item);
                     }
                 }

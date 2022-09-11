@@ -23,8 +23,8 @@
         public T ConvertTo<T>() where T : Unit
         {
             //todo : if must be found in database and must move to domin service
-            //var first = DB.GetAll.FirstOrDefault(x => x.Dimension == Dimension && x.GetType() == typeof(T));
-            //if (first == null)
+            //var unit = DB.GetAll.FirstOrDefault(x => x.Dimension == Dimension && x.GetType() == typeof(T));
+            //if (unit == null)
             //    throw new ArgumentException("چنین واحدی یافت نشد");
 
 
