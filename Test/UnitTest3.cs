@@ -1,4 +1,6 @@
-﻿namespace Test
+﻿using Dimension = zinoo2.Domain.Dimension;
+using UnitFormula = zinoo2.Domain.UnitFormula;
+namespace Test
 {
     public class UnitTest3
     {

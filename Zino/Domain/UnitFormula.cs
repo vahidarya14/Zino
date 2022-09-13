@@ -71,7 +71,7 @@
             //todo : use Regex to validate
             //return new Regex(@"^[0-9().+-/*a]$").IsMatch(formula);
 
-            var validCharacters = new[] { 'a', '(', ')', '.', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '-', '*', '/', ' ' };
+            var validCharacters = new[] { '^', 'a', '(', ')', '.', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '-', '*', '/', ' ' };
             if (formula.Count(x => x == '(') != formula.Count(x => x == ')'))
                 return false;
             return formula.All(item => validCharacters.Contains(item));
@@ -79,7 +79,7 @@
 
         public decimal Execute(string formula, decimal valueOfA)
         {
-            var mainOprations = new[] { '*', '/', '+', /*'-',*/ };
+            var mainOprations = new[] {'^', '*', '/', '+', /*'-',*/ };
             if (string.IsNullOrWhiteSpace(formula))
                 return 0;
 
@@ -141,6 +141,9 @@
                         break;
                     case "/":
                         resultInPrenteze = digit1 / digit2;
+                        break;
+                    case "^":
+                        resultInPrenteze =(decimal)Math.Pow((double)digit1 , (double)digit2);
                         break;
                     default:
                         break;

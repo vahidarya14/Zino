@@ -1,6 +1,10 @@
 ﻿using Zino_v2.DomainService;
 using Zino_v2.Domain;
 
+
+
+
+
 var km = new Value(10, Kilometer());
 var m = km.ConvertTo("m");
 Console.WriteLine($"{km}   =   {m} ");
