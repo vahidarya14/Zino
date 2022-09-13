@@ -41,36 +41,7 @@ namespace Zino_v2.DomainService
             return new Value(val, newUnit);
         }
 
-        //decimal CofficienToBase(UnitCoefficient coefficientUnit) => Valu * coefficientUnit.Coefficient;
-        //decimal CofficientToCofficient(UnitCoefficient coefficientUnitFrom, UnitCoefficient coefficientUnitTo)
-        //{
-        //    var val = CofficienToBase(coefficientUnitFrom);
-        //    return BaseToCofficient(coefficientUnitTo, val);
-        //}
-        //decimal CofficientToFormula(UnitCoefficient unitCoefficientFrom, UnitFormula unitFormulaTo)
-        //{
-        //    var val = CofficienToBase(unitCoefficientFrom);
-        //    val = BaseToFormula(unitFormulaTo, val);
-        //    return val;
-        //}
-
-        //decimal FormulaToCofficient(UnitFormula unitFormula, UnitCoefficient coefficientUnitTo)
-        //{
-        //    var val = FormulaToBase(unitFormula);
-        //    val = BaseToCofficient(coefficientUnitTo, val);
-        //    return val;
-        //}
-        //decimal FormulaToBase(UnitFormula unitFormula) => unitFormula.ParseFormula(unitFormula.FormulaToBase, Valu);
-        //decimal FormulaToFormula(UnitFormula unitFormulaFrom, UnitFormula unitFormulaTo)
-        //{
-        //    var val = FormulaToBase(unitFormulaFrom);
-        //    val = BaseToFormula(unitFormulaTo, val);
-        //    return val;
-        //}
-
-        //decimal BaseToBase() => Valu;
-        //decimal BaseToCofficient(UnitCoefficient coefficientUnit, decimal val) => val / coefficientUnit.Coefficient;
-        //decimal BaseToFormula(UnitFormula unitFormulaTo, decimal val) => unitFormulaTo.ParseFormula(unitFormulaTo.FormulaFromBase, val);
+        
 
     }
 }

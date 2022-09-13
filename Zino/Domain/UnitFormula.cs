@@ -40,20 +40,23 @@
 
 
             return val;
+
+
+            decimal FormulaToCofficient(UnitCoefficient coefficientUnitTo, decimal valu)
+            {
+                var val = FormulaToBaseUnit(valu);
+                val = BaseToCofficient(coefficientUnitTo, val);
+                return val;
+            }
+            decimal FormulaToBaseUnit(decimal valu) => ParseFormula(FormulaToBase, valu);
+            decimal FormulaToFormula(UnitFormula unitFormulaTo, decimal valu)
+            {
+                var val = FormulaToBaseUnit(valu);
+                val = BaseToFormula(unitFormulaTo, val);
+                return val;
+            }
         }
-        decimal FormulaToCofficient(UnitCoefficient coefficientUnitTo, decimal valu)
-        {
-            var val = FormulaToBaseUnit(valu);
-            val = BaseToCofficient(coefficientUnitTo, val);
-            return val;
-        }
-        decimal FormulaToBaseUnit(decimal valu) => ParseFormula(FormulaToBase, valu);
-        decimal FormulaToFormula(UnitFormula unitFormulaTo, decimal valu)
-        {
-            var val = FormulaToBaseUnit(valu);
-            val = BaseToFormula(unitFormulaTo, val);
-            return val;
-        }
+
 
         public bool ValidateFormula(string formula)
         {

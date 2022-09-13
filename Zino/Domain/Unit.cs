@@ -45,19 +45,12 @@ namespace Zino_v2.Domain
 
 
             return val;
+
+            decimal BaseToBase(decimal val) => val;
         }
-        decimal BaseToBase(decimal val) => val;
+     
         protected decimal BaseToCofficient(UnitCoefficient coefficientUnit, decimal val) => val / coefficientUnit.Coefficient;
         protected decimal BaseToFormula(UnitFormula unitFormulaTo, decimal val) => unitFormulaTo.ParseFormula(unitFormulaTo.FormulaFromBase, val);
-
-
-
-        public static Unit Meter() => new("متر", "Meter", "m", Dimension.Meter);
-        public static Unit Gram() => new("گرم", "Gram", "g", Dimension.Gram);
-        public static Unit Ampere() => new("امپر", "Ampere", "A", Dimension.Ampere);
-        public static Unit Second() => new("ثانیه", "Second", "S", Dimension.Second);
-        public static Unit Each() => new("عدد", "Each", "E", Dimension.Each);
-        public static Unit Celsius() => new("دما", "Celsius", "C", Dimension.Temp);
 
     }
 }
