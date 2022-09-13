@@ -25,8 +25,6 @@
         {
             if (newUnit == null)
                 throw new ArgumentException("چنین واحدی یافت نشد");
-
-
             if (newUnit.Dimension != Dimension)
                 throw new ArgumentException("تبدیل نامعتبر");
 
@@ -71,7 +69,7 @@
 
         public decimal ParseFormula(string formula, decimal valueOfA)
         {
-            var mainOprations = new[] { '*', '/', '+', '-', };
+            var mainOprations = new[] { '*', '/', '+', /*'-',*/ };
             if (string.IsNullOrWhiteSpace(formula))
                 return 0;
 
@@ -83,32 +81,32 @@
                 var start = formula.LastIndexOf('(');
                 var end = formula.IndexOf(')', start + 1);
                 var subStr = formula.Substring(start + 1, end - start - 1);
-                var subStr2 = DoTheBlock(subStr);
+                var subStr2 = ParseAndCalcTheBlock(subStr);
                 formula = formula.Replace($"{subStr}", "");
                 formula = formula.Replace("()", subStr2);
             }
 
-            formula = DoTheBlock(formula);
+            formula = ParseAndCalcTheBlock(formula);
 
 
             return decimal.Parse(formula);
 
 
-            string DoTheBlock(string subStr)
+            string ParseAndCalcTheBlock(string subStr)
             {
                 var subStr2 = subStr.Replace("-", "+-");
                 if (subStr2.StartsWith("+-"))
                     subStr2 = subStr2.Substring(1);
-                var opts1 = GetOperations(subStr2);
-                foreach (var op in new[] { '*', '/', '+' })
+                var oprands = GetOperations(subStr2);
+                foreach (var op in mainOprations)
                 {
-                    while (opts1.Contains(op))
+                    while (oprands.Contains(op))
                     {
-                        var digits = subStr2.Split(new[] { '*', '/', '+' }, StringSplitOptions.RemoveEmptyEntries).Select(x => decimal.Parse(x)).ToList();
+                        var digits = subStr2.Split(mainOprations, StringSplitOptions.RemoveEmptyEntries).Select(x => decimal.Parse(x)).ToList();
 
-                        var index = opts1.FindIndex(0, x => x == op);
+                        var index = oprands.FindIndex(0, x => x == op);
                         var resultInPrenteze = DoOperation(digits[index], digits[index + 1], op.ToString());
-                        opts1.Remove(opts1[index]);
+                        oprands.Remove(oprands[index]);
 
                         subStr2 = subStr2.Replace($"{digits[index]}{op}{digits[index + 1]}", resultInPrenteze.ToString());
                     }
@@ -140,21 +138,14 @@
                 return resultInPrenteze;
             }
 
-
             List<char> GetOperations(string formula)
             {
                 var opts = new List<char>();
                 for (var i = 0; i < formula.Length; i++)
                 {
                     var item = formula[i];
-                    if (new[] { '*', '/', '+' }.Contains(item))
+                    if (mainOprations.Contains(item))
                     {
-                        //if (item == '-')
-                        //{
-                        //    if (i>0 && formula[i - 1] != '[')
-                        //        opts.Add(item);
-                        //}
-                        //else
                         opts.Add(item);
                     }
                 }

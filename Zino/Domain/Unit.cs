@@ -29,24 +29,19 @@ namespace Zino_v2.Domain
         {
             if (newUnit == null)
                 throw new ArgumentException("چنین واحدی یافت نشد");
-
-
             if (newUnit.Dimension != Dimension)
                 throw new ArgumentException("تبدیل نامعتبر");
 
-            var val = 0m;
-
+            decimal val;
             if (newUnit is UnitCoefficient coefficientUnitTo)
                 val = BaseToCofficient(coefficientUnitTo, valu);
             else if (newUnit is UnitFormula UnitFormulaTo)
                 val = BaseToFormula(UnitFormulaTo, valu);
             else
-                val = BaseToBase(valu);
+                val = valu;
 
 
             return val;
-
-            decimal BaseToBase(decimal val) => val;
         }
      
         protected decimal BaseToCofficient(UnitCoefficient coefficientUnit, decimal val) => val / coefficientUnit.Coefficient;

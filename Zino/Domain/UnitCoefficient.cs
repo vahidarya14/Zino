@@ -14,8 +14,6 @@
         {
             if (newUnit == null)
                 throw new ArgumentException("چنین واحدی یافت نشد");
-
-
             if (newUnit.Dimension != Dimension)
                 throw new ArgumentException("تبدیل نامعتبر");
 
