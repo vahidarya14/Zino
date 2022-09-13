@@ -3,10 +3,13 @@
     /// <summary>واحد ضریب دار </summary>
     public class UnitCoefficient : Unit
     {
-        public decimal Coefficient { get; protected set; }
+        public decimal Coefficient { get; private set; }
 
         public UnitCoefficient(string perName, string engName, string simbol, Dimension dimension, decimal coefficient) : base(perName, engName, simbol, dimension)
         {
+            if(coefficient==0)
+                throw new Exception("ظریب نمیتواند 0 باشد");
+
             Coefficient = coefficient;
         }
 
@@ -17,14 +20,13 @@
             if (newUnit.Dimension != Dimension)
                 throw new ArgumentException("تبدیل نامعتبر");
 
-            decimal val;
-            if (newUnit is UnitCoefficient coefficientUnitTo)
-                val = CofficientToCofficient(coefficientUnitTo, valu);
-            else if (newUnit is UnitFormula unitFormulaTo)
-                val = CofficientToFormula(unitFormulaTo, valu);
-            else
-                val = CofficienToBase(valu);
 
+            decimal val =newUnit switch
+            {
+                UnitCoefficient coefficientUnitTo=> CofficientToCofficient(coefficientUnitTo, valu),
+                UnitFormula unitFormulaTo => CofficientToFormula(unitFormulaTo, valu),
+                _=> CofficienToBase(valu)
+            };
 
             return val;
 

@@ -3,22 +3,19 @@
     /// <summary>واحد فرمول دار</summary>
     public class UnitFormula : Unit
     {
-        public string FormulaFromBase { get; set; }
-        public string FormulaToBase { get; set; }
+        private readonly FormulaSpecification formulaSpecification=new FormulaSpecification();
+        public string FormulaFromBase { get; private set; }
+        public string FormulaToBase { get; private set; }
 
         public UnitFormula(string perName, string engName, string simbol, Dimension dimension, string formulaFromBase, string formulaToBase) : base(perName, engName, simbol, dimension)
         {
+            if (!ValidateFormula(formulaFromBase))
+                throw new Exception("invalid FormulaFromBase");
+            if (!ValidateFormula(formulaToBase))
+                throw new Exception("invalid FormulaToBase");
+
             FormulaFromBase = formulaFromBase;
             FormulaToBase = formulaToBase;
-
-            var isOK = ValidateFormula(FormulaFromBase);
-            var isOK2 = ValidateFormula(FormulaToBase);
-
-            if (!isOK)
-                throw new Exception("invalid FormulaFromBase");
-
-            if (!isOK2)
-                throw new Exception("invalid FormulaToBase");
         }
 
         public new decimal ConvertTo(Unit newUnit, decimal valu)
@@ -28,14 +25,12 @@
             if (newUnit.Dimension != Dimension)
                 throw new ArgumentException("تبدیل نامعتبر");
 
-            decimal val;
-            if (newUnit is UnitCoefficient coefficientUnitTo)
-                val = FormulaToCofficient(coefficientUnitTo, valu);
-            else if (newUnit is UnitFormula unitFormulaTo)
-                val = FormulaToFormula(unitFormulaTo, valu);
-            else
-                val = FormulaToBaseUnit(valu);
-
+            decimal val = newUnit switch
+            {
+                UnitCoefficient coefficientUnitTo => FormulaToCofficient(coefficientUnitTo, valu),
+                UnitFormula unitFormulaTo => FormulaToFormula(unitFormulaTo, valu),
+                _ => FormulaToBaseUnit(valu)
+            };
 
             return val;
 
@@ -56,7 +51,22 @@
         }
 
 
-        public bool ValidateFormula(string formula)
+        public bool ValidateFormula(string formula) => formulaSpecification.CanExecure(formula);
+
+        public decimal ParseFormula(string formula, decimal valueOfA) => formulaSpecification.Execute(formula, valueOfA);
+
+    }
+
+
+    public interface ISpecification<T>
+    {
+        bool CanExecure(string formula);
+        decimal Execute(string formula, decimal valueOfA);
+    }
+
+    public class FormulaSpecification : ISpecification<UnitFormula>
+    {
+        public bool CanExecure(string formula)
         {
             //todo : use Regex to validate
             //return new Regex(@"^[0-9().+-/*a]$").IsMatch(formula);
@@ -67,7 +77,7 @@
             return formula.All(item => validCharacters.Contains(item));
         }
 
-        public decimal ParseFormula(string formula, decimal valueOfA)
+        public decimal Execute(string formula, decimal valueOfA)
         {
             var mainOprations = new[] { '*', '/', '+', /*'-',*/ };
             if (string.IsNullOrWhiteSpace(formula))
@@ -154,6 +164,5 @@
         }
 
     }
-
 
 }

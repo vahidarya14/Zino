@@ -32,14 +32,13 @@ namespace Zino_v2.Domain
             if (newUnit.Dimension != Dimension)
                 throw new ArgumentException("تبدیل نامعتبر");
 
-            decimal val;
-            if (newUnit is UnitCoefficient coefficientUnitTo)
-                val = BaseToCofficient(coefficientUnitTo, valu);
-            else if (newUnit is UnitFormula UnitFormulaTo)
-                val = BaseToFormula(UnitFormulaTo, valu);
-            else
-                val = valu;
 
+            decimal val = newUnit switch
+            {
+                UnitCoefficient coefficientUnitTo => BaseToCofficient(coefficientUnitTo, valu),
+                UnitFormula unitFormulaTo => BaseToFormula(unitFormulaTo, valu),
+                _ => valu
+            };
 
             return val;
         }
