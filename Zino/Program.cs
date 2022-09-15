@@ -4,6 +4,17 @@ using Zino_v2.Domain;
 
 
 
+decimal Execute(string formula, decimal val) {
+    FormulaSpecification FormulaSpecification=new();
+    if(!FormulaSpecification.CanExecure(formula)) 
+        throw new Exception("invalid formula");
+    return  FormulaSpecification.Execute(formula, val);
+}
+
+var res = Execute("radical(radical(8*2,4/2),3)*8/3", 4);
+var res2 = Execute("((x * (3^2)/(3^2)) + 10)^2", 4);
+var eq =  res2;
+
 
 var km = new Value(10, Kilometer());
 var m = km.ConvertTo("m");

@@ -21,8 +21,8 @@ namespace Zino_v2.Persistance
             new UnitCoefficient ("کیلو گرم", "Kilogram", "kg", Dimension.Gram, 1000M),
             new UnitCoefficient ("تن", "Tonne", "ton", Dimension.Gram, 1000000M) ,
         //-----
-            new UnitFormula("کلوین", "Kelvin", "K", Dimension.Temp, "a + 273.15", "a - 273.15") ,
-            new UnitFormula("فارنهایت", "Fahrenheit", "F", Dimension.Temp, "(a * 9/5) + 32", "(a - 32) * 5/9")
+            new UnitFormula("کلوین", "Kelvin", "K", Dimension.Temp, "x + 273.15", "x - 273.15") ,
+            new UnitFormula("فارنهایت", "Fahrenheit", "F", Dimension.Temp, "(x * 9/5) + 32", "(x - 32) * 5/9")
         };
     }
 }
