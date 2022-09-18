@@ -11,7 +11,9 @@ decimal Execute(string formula, decimal val) {
     return  FormulaSpecification.Execute(formula, val);
 }
 
-var res = Execute("radical(radical(8*2,4/2),3)*8/3", 4);
+var res1 = Execute("radical(8*2,2^0)", 4);
+var res3 = Execute("radical(8*2+(5+1),2^2-(2^0))", 4);
+var res = Execute("5+|4+|[radical(radical(8*2+(5+1),2^2-(2^0)),3)*8/3]|-2|-3", 4);
 var res2 = Execute("((x * (3^2)/(3^2)) + 10)^2", 4);
 var eq =  res2;
 

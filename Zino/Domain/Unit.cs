@@ -5,7 +5,7 @@ namespace Zino_v2.Domain
     {
         public string PersianName { get; private set; }
         public string EnglishName { get; private set; }
-        public string Simbol { get; private set; }
+        public string Symbol { get; private set; }
         public Dimension Dimension { get; private set; }
 
         public Unit(string persianName, string englishName, string simbol, Dimension dimension)
@@ -15,14 +15,14 @@ namespace Zino_v2.Domain
 
             PersianName = persianName;
             EnglishName = englishName;
-            Simbol = simbol;
+            Symbol = simbol;
             Dimension = dimension;
         }
 
 
         public override string ToString()
         {
-            return $"{Simbol}";
+            return $"{Symbol}";
         }
 
         public decimal ConvertTo(Unit newUnit, decimal valu)

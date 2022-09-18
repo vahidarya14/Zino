@@ -15,12 +15,12 @@ namespace Zino_v2.DomainService
 
         public override string ToString()
         {
-            return $"{Valu}{Unit.Simbol}";
+            return $"{Valu}{Unit.Symbol}";
         }
 
         public Value ConvertTo(string simbolOfEnglishNameOrPersianname)
         {
-            var newUnit = DB.GetAll.FirstOrDefault(x => x.Simbol == simbolOfEnglishNameOrPersianname ||
+            var newUnit = DB.GetAll.FirstOrDefault(x => x.Symbol == simbolOfEnglishNameOrPersianname ||
                                                         x.PersianName == simbolOfEnglishNameOrPersianname ||
                                                         x.EnglishName == simbolOfEnglishNameOrPersianname);
             if (newUnit == null)
